@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.4",
+  "uuid": "5a84eec6-6333-4506-80a6-e9df042d8501",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 256,
+  "height": 2048,
+  "platformSettings": {},
+  "subMetas": {
+    "口袋妖怪-室內1": {
+      "ver": "1.0.4",
+      "uuid": "f4de8141-c963-4f7a-bd3a-6f0171719fff",
+      "rawTextureUuid": "5a84eec6-6333-4506-80a6-e9df042d8501",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": -128,
+      "trimX": 0,
+      "trimY": 256,
+      "width": 256,
+      "height": 1792,
+      "rawWidth": 256,
+      "rawHeight": 2048,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "New AnimationClip - 002",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 0.3,
+  "sample": 10,
+  "speed": 1,
+  "wrapMode": 2,
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "ffa91631-8a78-4ab1-acd3-0ba4519621fc"
+            }
+          },
+          {
+            "frame": 0.1,
+            "value": {
+              "__uuid__": "cd7206a3-b6c0-4411-b32a-3e9e2919a8ac"
+            }
+          },
+          {
+            "frame": 0.2,
+            "value": {
+              "__uuid__": "a8d84319-0b2c-4e17-8d54-6e199b80e92e"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": []
+}

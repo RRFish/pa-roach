@@ -1,0 +1,55 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "roach",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 0.6,
+  "sample": 10,
+  "speed": 1,
+  "wrapMode": 2,
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "d6544e35-e9a6-4bb0-858d-3f82ff39721b"
+            }
+          },
+          {
+            "frame": 0.1,
+            "value": {
+              "__uuid__": "18b491c9-f7c9-424c-b67d-0f487498b4a3"
+            }
+          },
+          {
+            "frame": 0.2,
+            "value": {
+              "__uuid__": "f723283c-b738-48ab-a324-7f0ac7afb67e"
+            }
+          },
+          {
+            "frame": 0.3,
+            "value": {
+              "__uuid__": "f4c54ff6-7956-4be0-8b7a-6b1a660a6bd8"
+            }
+          },
+          {
+            "frame": 0.4,
+            "value": {
+              "__uuid__": "4d917e8a-8664-4969-810c-72fa93968808"
+            }
+          },
+          {
+            "frame": 0.5,
+            "value": {
+              "__uuid__": "bd29c992-9ff8-4f20-b12b-630d5d281b31"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": []
+}

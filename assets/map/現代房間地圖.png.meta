@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.4",
+  "uuid": "8b96dc3a-df7a-4b6e-b9f8-63d1a6b0af1b",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 256,
+  "height": 1000,
+  "platformSettings": {},
+  "subMetas": {
+    "現代房間地圖": {
+      "ver": "1.0.4",
+      "uuid": "4724a2d1-3493-4cb0-a494-46d2fc868d2f",
+      "rawTextureUuid": "8b96dc3a-df7a-4b6e-b9f8-63d1a6b0af1b",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 100,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 256,
+      "height": 800,
+      "rawWidth": 256,
+      "rawHeight": 1000,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
