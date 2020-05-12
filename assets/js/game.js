@@ -99,7 +99,6 @@ cc.Class({
 
         const randArea = Math.floor(Math.random()*3);
         
-        // const map = this.maps.children[randArea];
         const map = this.maps.children[randArea];
         console.log(map.width)
         console.log(map.height)
@@ -107,28 +106,32 @@ cc.Class({
         const tiledSize =tiledmap.getTileSize();
         const layer = tiledmap.getLayer('road');
         const layerSize = layer.getLayerSize();
-
+        console.log(layerSize)
 
         while(true){
+
             const layerPos={
                 x:Math.floor(Math.random() * layerSize.width),
                 y:Math.floor(Math.random() * layerSize.height)
             }
             const tiled = layer.getTiledTileAt(layerPos.x, layerPos.y, true);
-            if(tiled.gid !== 0){//is road
-                // const pos={
-                //     x:layerPos.x * map.width / layerSize.width,
-                //     y:layerPos.y * map.height / layerSize.height
-                // }
-                const pos = {
-                    x:0,
-                    y:0
+            console.log(tiled)
+            if(tiled.gid != 0){//is road
+                const pos={
+                    x:layerPos.x * map.width / layerSize.width,
+                    y:layerPos.y * map.height / layerSize.height
                 }
+                // const pos = {
+                //     x:192,
+                //     y:192
+                // }
                 const worldPos = map.convertToWorldSpaceAR(cc.v2(pos.x,pos.y));
                 const bgPos = this.node.convertToNodeSpaceAR(worldPos);
              
                monster.setPosition(bgPos);
                return ;
+            }else{
+                console.log("tiled=0")
             }
 
         }
