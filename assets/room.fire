@@ -177,7 +177,7 @@
       "array": [
         0,
         0,
-        265.7555937217188,
+        266.83326808093165,
         0,
         0,
         0,
@@ -1861,6 +1861,9 @@
     "labels": {
       "__id__": 45
     },
+    "dialog": {
+      "__id__": 47
+    },
     "_id": "83Z2MlgPBJ56CpZjATyfbs"
   },
   {
@@ -2430,8 +2433,8 @@
       }
     ],
     "_useOriginalSize": false,
-    "_string": "這是對話框拉\n文本就是拉基",
-    "_N$string": "這是對話框拉\n文本就是拉基",
+    "_string": "這是對話框\n文本",
+    "_N$string": "這是對話框\n文本",
     "_fontSize": 20,
     "_lineHeight": 22,
     "_enableWrapText": true,
@@ -2828,6 +2831,9 @@
     },
     "walkAudio": {
       "__uuid__": "d72dcf83-a0e5-4213-9fb2-a726806689aa"
+    },
+    "dialog": {
+      "__id__": 47
     },
     "_id": "1eGv/2hE5H2IWiRp27xljn"
   },

@@ -19,7 +19,8 @@ cc.Class({
         labels:{
             type:cc.Node,
             default:null
-        }
+        },
+        dialog:cc.Node
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -36,8 +37,11 @@ cc.Class({
         this.killNum = 0;
         this.roachNum = 0;
 
-        setInterval(()=>{
-            this.generateRoach();
+        this.interval=setInterval(()=>{
+            if(this.dialog.getComponent('dialog').gameStart){
+                this.generateRoach();
+            }
+            
         },1000)
         
 
@@ -84,7 +88,28 @@ cc.Class({
         this.roachNum +=1;
         const roachNumLabel = this.labels.getChildByName('roachNum');
         roachNumLabel.getComponent(cc.Label).string = `蟑螂：${this.roachNum}`;
-        console.log(roach.parent)
+
+        //lose
+        const loseNum=50;
+        if(this.roachNum>=loseNum){
+            // alert("失敗")
+            const dialog = this.dialog.getComponent('dialog');
+            dialog.init([
+                {role:1,content:"失敗!!空白鍵重新開始遊戲"}
+            ]);
+            clearInterval(this.interval);
+
+            setTimeout(()=>{
+                this.node.active=false;
+            },1000)
+            cc.systemEvent.on('keydown', (e)=>{
+                switch(e.keyCode){
+                    case cc.macro.KEY.space:
+                        cc.director.loadScene("room");
+                        break;
+                }
+            },this);            
+        }        
 
     },
     increaseKillNum(){
@@ -94,19 +119,40 @@ cc.Class({
         killNumLabel.getComponent(cc.Label).string = `擊殺：${this.killNum}`;      
         const roachNumLabel = this.labels.getChildByName('roachNum');
         roachNumLabel.getComponent(cc.Label).string = `蟑螂：${this.roachNum}`;  
+
+        //win
+        const winNum=30;
+        if(this.killNum>=winNum){
+            const dialog = this.dialog.getComponent('dialog');
+            dialog.init([
+                {role:1,content:"勝利!!空白鍵重新開始遊戲"}
+            ]);
+            clearInterval(this.interval);
+
+            setTimeout(()=>{
+                this.node.active=false;
+            },1000)
+            cc.systemEvent.on('keydown', (e)=>{
+                switch(e.keyCode){
+                    case cc.macro.KEY.space:
+                        cc.director.loadScene("room");
+                        break;
+                }
+            },this);
+
+            
+        }        
     },
     setRandMonsterPosition(monster){
 
         const randArea = Math.floor(Math.random()*3);
         
         const map = this.maps.children[randArea];
-        console.log(map.width)
-        console.log(map.height)
+
         const tiledmap  = map.getComponent(cc.TiledMap);
         const tiledSize =tiledmap.getTileSize();
         const layer = tiledmap.getLayer('road');
         const layerSize = layer.getLayerSize();
-        console.log(layerSize)
 
         while(true){
 
@@ -115,7 +161,6 @@ cc.Class({
                 y:Math.floor(Math.random() * layerSize.height)
             }
             const tiled = layer.getTiledTileAt(layerPos.x, layerPos.y, true);
-            console.log(tiled)
             if(tiled.gid != 0){//is road
                 const pos={
                     x:layerPos.x * map.width / layerSize.width,
@@ -131,12 +176,11 @@ cc.Class({
                monster.setPosition(bgPos);
                return ;
             }else{
-                console.log("tiled=0")
+                // console.log("tiled=0")
             }
 
         }
 
-    }
+    },
 
-    // update (dt) {},
 });

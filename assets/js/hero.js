@@ -15,7 +15,8 @@ cc.Class({
         walkAudio:{
             type:cc.AudioClip,
             default:null
-        }
+        },
+        dialog:cc.Node        
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -51,6 +52,7 @@ cc.Class({
         input[e.keyCode] = false;
     },
     update (dt) {
+        if(!this.dialog.getComponent('dialog').gameStart) return ;
         const position = this.node.position;
         // console.log(position);
         if(input[cc.macro.KEY.up]){
