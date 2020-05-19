@@ -53,7 +53,7 @@ cc.Class({
     },
     update (dt) {
         if(!this.dialog.getComponent('dialog').gameStart) return ;
-        const position = this.node.position;
+        // const position = this.node.position;
         // console.log(position);
         if(input[cc.macro.KEY.up]){
             this.sp.y = 1;
@@ -124,7 +124,6 @@ cc.Class({
 
         //Spray
         if(input[cc.macro.KEY.a]  && this.emitingSpray === false){
-
             const spray= cc.instantiate(this.spray);
             const sprayScript=spray.getComponent('Spray');
             this.node.addChild(spray);            

@@ -27,6 +27,6 @@ cc.Class({
 
         //set ui position
 
-        this.UI.setPosition(n_pos);
+        this.UI.setPosition(n_pos.x-384,n_pos.y-384);
     },
 });

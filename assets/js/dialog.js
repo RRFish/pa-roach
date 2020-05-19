@@ -22,9 +22,9 @@ cc.Class({
 
     onLoad () {
         this.init([
-            {role:1,content:"我是阿柴 (空白鍵)"},
-            {role:1,content:"家裡最近多了很多蟑螂 (空白鍵)"},
-            {role:1,content:"看來只好由我出馬將他們消滅了!! (空白鍵)"},
+            {role:1,content:"我是阿柴 (a)"},
+            {role:1,content:"家裡最近多了很多蟑螂 (a)"},
+            {role:1,content:"看來只好由我出馬將他們消滅了!! (a)"},
             {role:1,content:"a:攻擊 方向鍵:移動 "},
             {role:1,content:"勝利:打死30隻蟑螂 失敗:蟑螂超過50隻"},
         ]);
@@ -35,7 +35,7 @@ cc.Class({
     },
     keyDown(e){
         switch(e.keyCode){
-            case cc.macro.KEY.space:
+            case cc.macro.KEY.a:
                 this.nextTextData();
                 break;
         }
@@ -83,7 +83,7 @@ cc.Class({
                 clearInterval(interval);
             }
                 
-        },100)
+        },50)
         
     },
     colseDialog(){

@@ -42,7 +42,7 @@ cc.Class({
                 this.generateRoach();
             }
             
-        },1000)
+        },700)
         
 
 
@@ -50,8 +50,8 @@ cc.Class({
     start(){
         const maps = this.maps.children;
 
-        for(map of maps){
-            let tiledmap  = map.getComponent(cc.TiledMap);
+        for(let i = 0 ; i < maps.length ; i++){
+            let tiledmap  = maps[i].getComponent(cc.TiledMap);
             let tiledSize =tiledmap.getTileSize();
             let layer = tiledmap.getLayer('walls');
             let layerSize = layer.getLayerSize();
@@ -80,6 +80,13 @@ cc.Class({
 
 
     },
+    reloadGame(e){
+        switch(e.keyCode){
+            case cc.macro.KEY.a:
+                cc.director.loadScene("room");
+                break;
+        }
+    },
     generateRoach(){
         const roach = cc.instantiate(this.roach);
         this.node.addChild(roach);      
@@ -92,23 +99,18 @@ cc.Class({
         //lose
         const loseNum=50;
         if(this.roachNum>=loseNum){
+            this.gameover = true;
             // alert("失敗")
             const dialog = this.dialog.getComponent('dialog');
             dialog.init([
-                {role:1,content:"失敗!!空白鍵重新開始遊戲"}
+                {role:1,content:"失敗!!a鍵重新開始遊戲"}
             ]);
             clearInterval(this.interval);
 
             setTimeout(()=>{
                 this.node.active=false;
             },1000)
-            cc.systemEvent.on('keydown', (e)=>{
-                switch(e.keyCode){
-                    case cc.macro.KEY.space:
-                        cc.director.loadScene("room");
-                        break;
-                }
-            },this);            
+            cc.systemEvent.on('keydown', this.reloadGame,this);            
         }        
 
     },
@@ -123,36 +125,32 @@ cc.Class({
         //win
         const winNum=30;
         if(this.killNum>=winNum){
+            this.gameover = true;
             const dialog = this.dialog.getComponent('dialog');
             dialog.init([
-                {role:1,content:"勝利!!空白鍵重新開始遊戲"}
+                {role:1,content:"勝利!!a鍵重新開始遊戲"}
             ]);
             clearInterval(this.interval);
 
             setTimeout(()=>{
                 this.node.active=false;
             },1000)
-            cc.systemEvent.on('keydown', (e)=>{
-                switch(e.keyCode){
-                    case cc.macro.KEY.space:
-                        cc.director.loadScene("room");
-                        break;
-                }
-            },this);
+            cc.systemEvent.on('keydown', this.reloadGame, this);
 
             
         }        
     },
     setRandMonsterPosition(monster){
 
-        const randArea = Math.floor(Math.random()*3);
+        const randArea = Math.floor(Math.random()*4);
         
         const map = this.maps.children[randArea];
 
         const tiledmap  = map.getComponent(cc.TiledMap);
-        const tiledSize =tiledmap.getTileSize();
+        // const tiledSize =tiledmap.getTileSize();
         const layer = tiledmap.getLayer('road');
-        const layerSize = layer.getLayerSize();
+        const wallLayer = tiledmap.getLayer('walls');
+        const layerSize = layer.getLayerSize();//0-23
 
         while(true){
 
@@ -161,10 +159,11 @@ cc.Class({
                 y:Math.floor(Math.random() * layerSize.height)
             }
             const tiled = layer.getTiledTileAt(layerPos.x, layerPos.y, true);
-            if(tiled.gid != 0){//is road
+            const wallTiled = wallLayer.getTiledTileAt(layerPos.x, layerPos.y, true);
+            if(tiled.gid != 0 && wallTiled.gid==0 ){//is road
                 const pos={
                     x:layerPos.x * map.width / layerSize.width,
-                    y:layerPos.y * map.height / layerSize.height
+                    y:map.height-(layerPos.y * map.height / layerSize.height)
                 }
                 // const pos = {
                 //     x:192,
