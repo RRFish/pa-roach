@@ -15,10 +15,10 @@ cc.Class({
     },
 
     start () {
-        // if(!cc.sys.isMobile){
-        //     this.node.active = false; 
-        //     return ;
-        // }
+        if(!cc.sys.isMobile){
+            this.node.active = false; 
+            return ;
+        }
 
         
         const tiledmap  = this.getComponent(cc.TiledMap);
